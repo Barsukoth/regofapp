@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Изменить</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.fullname.label }}<br>
+            {{ form.fullname(size=64, value=user.fullname) }}<br>
+            {% for error in form.fullname.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=64, value=user.email) }}<br>
+            {% for error in form.email.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.phone.label }}<br>
+            {{ form.phone(size=32, value=user.phone) }}<br>
+            {% for error in form.phone.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.gpa.label }}<br>
+            {{ form.gpa(size=32, value=user.gpa) }}<br>
+            {% for error in form.gpa.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.id_reg.label }}<br>
+            {{ form.id_reg(size=32, value=user.id_reg) }}<br>
+            {% for error in form.id_reg.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit(class="btn btn-lg btn-success") }}</p><p><a class="me-3 py-2 link-dark text-decoration-none" href="{{ url_for('admin') }}">Отмена</a></p>
+    </form>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container col-xl-10 col-xxl-8">
+    <div class="row align-items-center">
+      <div class="col-lg-7 text-center text-lg-start">
+        <h1 class="display-4 fw-bold lh-1 mb-3">Войдите в систему, чтобы просматривать рейтинг поступающих</h1>
+        <p class="col-lg-10 fs-4">Чтобы получить данные для входа, <a class="text-decoration-none" href="{{ url_for('regofapp') }}">подайте документы</a>.</p>
+      </div>
+      <div class="col-md-10 mx-auto col-lg-5">
+          <div class="form-floating mb-3">
+            <form class="p-4 p-md-5 border rounded-3 bg-light" action="" method="post"  novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.id_reg.label }}<br>
+        {{ form.id_reg(size=26) }}<br>
+        {% for error in form.id_reg.errors %}
+        <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.password.label }}<br>
+        {{ form.password(size=26) }}<br>
+        {% for error in form.password.errors %}
+        <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </p>
+    <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+      <p>{{ form.submit(class="w-100 btn btn-lg btn-primary") }}</p>
+          <hr class="my-4">
+              <small class="text-muted">Нажимая кнопку «Войти», Вы соглашаетесь с <a class="text-decoration-none" href="{{ url_for('confidentiality') }}">политикой конфиденциальности</a> и <a class="text-decoration-none" href="{{ url_for('cookie') }}">использованием cookie-файлов</a>.</small>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+{% endblock %}

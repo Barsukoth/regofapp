@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if current_user.is_anonymous %}
+  <h1>Вы не вошли в систему. <a class="me-3 py-2 text-dark text-decoration-none" href="{{ url_for('login') }}">Войти?</a></h1>
+  {% else %}
+  <h1>Вошли как: {{ current_user.username }}. <a class="me-3 py-2 text-dark text-decoration-none" href="{{ url_for('logout') }}">Выйти</a></h1>
+  {% endif %}
+<!--    {% for post in posts %}-->
+<!--    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>-->
+<!--    {% endfor %}-->
+{% endblock %}

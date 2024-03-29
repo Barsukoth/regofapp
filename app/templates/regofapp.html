@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3 align="center">Краевое государственное бюджетное профессиональное образовательное учреждение<br>"Приморский колледж колледж"</h3>
+<br>
+<p>Ведёт приём по следующим профессиям:</p>
+<table>
+    <thead>
+    <tr>
+        <th width="200px">Профессия</th>
+        <th width="200px">Нормативный срок освоения программы</th>
+        <th width="200px">Бюджетные места</th>
+    </tr>
+    </thead>
+<tbody>
+    <tr>
+        <td>Столяр</td>
+        <td>1 год 10 мес.</td>
+        <td>25 человек</td>
+    </tr>
+    <tr>
+        <td>Повар</td>
+        <td>1 год 10 мес.</td>
+        <td>25 человек</td>
+    </tr>
+    <tr>
+        <td>Штукатур; Маляр строительный</td>
+        <td>1 год 10 мес.</td>
+        <td>25 человек</td>
+    </tr>
+</tbody>
+</table>
+<br>
+<h3>Рейтинг поступающих доступен онлайн по ссылкам*:</h3>
+<br>
+<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+    <button type="button" class="btn btn-primary btn-lg px-4"><a class="link-light text-decoration-none" href="{{ url_for('rating_carp') }}">Столяр</a></button>
+    <button type="button" class="btn btn-primary btn-lg px-4"><a class="link-light text-decoration-none" href="{{ url_for('rating_cook') }}">Повар</a></button>
+    <button type="button" class="btn btn-primary btn-lg px-4"><a class="link-light text-decoration-none" href="{{ url_for('rating_painter') }}">Маляр строительный</a></button>
+</div>
+<br>
+<p>Приёмная комиссия работает с 1 июня 2022 года по адресу г. Уссурийск, ул. Пушкина, 100.<br>
+    Подать документы можно онлайн. Для этого отправьте документы на почту <a class="link-primary text-decoration-none" href="mailto:alexestas@mail.ru">alexestas@mail.ru</a>.<br>
+<br>
+Необходимые документы для поступления:
+    <br>1. Документ об образовании
+    <br>2. Паспорт
+    <br>3. Фотографии 3x4 — 4 шт.
+    <br>4. Медицинская справка Ф068-У
+    <br>5. Копия СНИЛС
+    <br>6. Копия приписного свидетельства
+</p>
+<br>
+<p>*Просмотр списка доступен только поступающим. Мы заботимся о конфиденциальности данных: <a class="link-primary text-decoration-none" href="{{ url_for('confidentiality') }}">Политика конфиденциальности</a>.</p>
+
+{% endblock %}

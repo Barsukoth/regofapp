@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p><a class="link-success text-decoration-none" href="{{ url_for('registration') }}">Зарегистрировать</a> пользователя.</p>
+<h2>Список пользователей:</h2>
+<table>
+<thead>
+    <tr>
+        <th>ID</th>
+        <th>Права</th>
+        <th>ФИО</th>
+        <th>Email</th>
+        <th>Телефон</th>
+        <th>ID абитуриента</th>
+        <th>Повар</th>
+        <th>Столяр</th>
+        <th>Маляр</th>
+        <th>СБА</th>
+        <th>Документы</th>
+    </tr>
+</thead>
+<tbody>
+    {% for user in users %}
+    {% if user.admin == True %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>Сотрудник</td>
+            <td>{{ user.fullname }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phone }}</td>
+            <td>Логин: {{ user.id_reg }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            {% if user.id == 1 %}
+            <td></td>
+            <td></td>
+            {% else %}
+            <td><a href="/user/edit/{{ user.id }}"><img src="/static/edit.png" alt="Изменить" width="20px"></a></td>
+            <td><a href="/user/delete/{{ user.id }}"><img src="/static/delete.png" alt="Удалить" width="20px"></a></td>
+            {% endif %}
+        </tr>
+    {% else %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>Абитуриент</td>
+            <td>{{ user.fullname }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.id_reg }}</td>
+            {% if user.cook == True %}
+            <td><img src="/static/true.png" width="20px"></td>
+            {% else %}
+            <td><img src="/static/false.png" width="20px"></td>
+            {% endif %}
+            {% if user.carp == True %}
+            <td><img src="/static/true.png" width="20px"></td>
+            {% else %}
+            <td><img src="/static/false.png" width="20px"></td>
+            {% endif %}
+            {% if user.paint == True %}
+            <td><img src="/static/true.png" width="20px"></td>
+            {% else %}
+            <td><img src="/static/false.png" width="20px"></td>
+            {% endif %}
+            <td>{{ user.gpa }}</td>
+            {% if user.docs == True %}
+            <td>Оригинал</td>
+            {% else %}
+            <td>Копия</td>
+            {% endif %}
+            <td><a href="/user/edit/{{ user.id }}"><img src="/static/edit.png" alt="Изменить" width="20px"></a></td>
+            <td><a href="/user/delete/{{ user.id }}"><img src="/static/delete.png" alt="Удалить" width="20px"></a></td>
+        </tr>
+    {% endif %}
+    {% endfor %}
+</tbody>
+</table>
+{% endblock %}

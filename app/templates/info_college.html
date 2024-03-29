@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+<script type="text/javascript">
+    var map;
+
+    DG.then(function () {
+        map = DG.map('map', {
+            center: [43.79991611516142, 131.96159611794891],
+            zoom: 13
+        });
+
+        DG.marker([43.79991611516142, 131.96159611794891]).addTo(map).bindPopup('КГБ ПОУ «Приморский колледж»');
+    });
+</script>
+
+<h3 align="center">Краевое государственное бюджетное профессиональное образовательное учреждение<br>"Приморский колледж колледж"</h3>
+<p align="center">г. Уссурийск.</p>
+
+<p>Дата образования: 23 декабря 1953 года. <br>
+Сокращенное наименование: КГБ ПОУ "Приморский колледж" г. Уссурийск. <br>
+Организационно-правовая форма: учреждение.<br>
+</p>
+
+<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3"><a href="{{ url_for('regofapp') }}" class="link-light text-decoration-none">Информация о приёмной комиссии</a></button>
+</div>
+
+<p><br>Местонахождение Учреждения, электронная почта:<br>
+    <br>
+    692525,<br>
+    Россия,<br>
+    Приморский край,<br>
+    г. Уссурийск,<br>
+    ул. Пушкина, 100.<br>
+    <br>
+    Е-mail: alexestas@mail.ru
+    <br>
+    <div id="map" style="width:500px; height:400px"></div>
+    </p>
+    <br>
+    <p> График работы КГБ ПОУ "Приморский колледж":</p>
+
+    <table>
+    <tbody>
+    <tr>
+    <td width="150px">Понедельник</td>
+    <td width="150px">9:00 - 18:00</td>
+    </tr>
+    <tr>
+    <td>Вторник</td>
+    <td>9:00 - 18:00</td>
+    </tr>
+    <tr>
+    <td>Среда</td>
+    <td>9:00 - 18:00</td>
+    </tr>
+    <tr>
+    <td>Четверг</td>
+    <td>9:00 - 18:00</td>
+    </tr>
+    <tr>
+    <td>Пятница</td>
+    <td>9:00 - 18:00</td>
+    </tr>
+    <tr>
+    <td>Суббота</td>
+    <td>Выходной</td>
+    </tr>
+    <tr>
+    <td>Воскресенье</td>
+    <td>Выходной</td>
+    </tr>
+    </tbody>
+    </table>
+</p>
+{% endblock %}

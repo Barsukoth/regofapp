@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if user.admin == True %}
+    <h1>Удалить {{ user.fullname }}? Логин сотрудника {{ user.id_reg }}</h1>
+{% else %}
+    <h1>Удалить {{ user.fullname }}? ID абитуриента {{ user.id_reg }}</h1>
+{% endif %}
+    <form action="" method="post">
+        <p><a class="me-3 py-2 link-dark text-decoration-none" href="{{ url_for('admin') }}">Отмена</a><a class="me-3 py-2 link-danger text-decoration-none" href="/user/delete_yes/{{ user.id }}">Да, удалить</a></p>
+    </form>
+
+{% endblock %}

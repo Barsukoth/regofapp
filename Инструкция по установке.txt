@@ -1,0 +1,25 @@
+Для запуска проекта необходим Python версиии старше 3.4. Откройте папку с проектом в IDE и выполните следующие действия в терминале:
+
+1. Создайте виртуальное окружение:
+python -m venv venv
+
+2. Активируйте виртуальное окружение:
+source venv/bin/activate
+
+Команда активации для cmd (окна командной строки Microsoft Windows):
+\venv\Scripts\activate
+
+3. Установите библиотеки в виртуальное окружение, необходимые для запуска:
+pip install -r requirements.txt
+
+4. Запустите приложение Flask:
+flask run
+
+##########
+Если Flask не получается найти основное приложение, сообщите Flask'у, как его импортировать:
+export FLASK_APP=regofapp.py
+
+Команда для cmd (окна командной строки Microsoft Windows):
+set FLASK_APP=regofapp.py
+
+Документация по Flask: https://flask.palletsprojects.com

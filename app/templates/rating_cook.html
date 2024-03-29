@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--Строим таблицу-->
+<h2>Рейтинг поступающих, профессия Повар:</h2>
+<table>
+<thead>
+    <tr>
+        <th>ID комиссия</th>
+        <th>ФИО</th>
+        <th>Средний балл аттестата</th>
+        <th>Документы</th>
+    </tr>
+</thead>
+<tbody>
+    {% for user in users %}
+<!--заносим пользователя в таблицу, если значение Повар == True-->
+    {% if user.cook %}
+    <tr>
+        <td>{{ user.id_reg }}</td>
+        <td>{{ user.fullname }}</td>
+        <td>{{ user.gpa }}</td>
+        {% if user.docs == True %}
+        <td>Оригинал</td>
+        {% else %}
+        <td>Копия</td>
+        {% endif %}
+    </tr>
+    {% endif %}
+    {% endfor %}
+</tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+
+.flexim {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.padd {
+    padding: 5px;
+}
+
+.card
+{
+	position: relative;
+	width: 250px;
+	height: 140px;
+	background: #fff;
+	border-radius: 20px;
+	transition: 0.35s;
+	box-shadow: 0 35px 80px rgba(0,0,0,0.15);
+}
+.card:hover
+{
+	height: 330px;
+}
+
+.card .content
+{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	overflow: hidden;
+
+}
+.card .details
+{
+	padding: 40px 40px;
+	text-align: center;
+	width: 100%;
+	transition: 0.3s;
+	transform: translateY(250px);
+}
+.card:hover .details
+{
+	transform: translateY(60px);
+}
+.card .details h2
+{
+	font-size: 1.25em;
+	font-weight: 600;
+	color: #555;
+	line-height: 1.2em;
+}
+.card .details h2 span
+{
+	font-size: 0.75em;
+	font-weight: 500;
+	opacity: 0.5;
+}
+.card .details .data
+{
+	display: flex;
+	justify-content: space-between;
+	margin: 20px 0;
+}
+.card .details .data h3
+{
+	font-size: 1em;
+	color: #555;
+	line-height: 1.2em;
+	font-weight: 600;
+}
+.card .details .data h3 span
+{
+	font-size: 0.85em;
+	font-weight: 400;
+}
+</style>
+<p><a class="link-success text-decoration-none" href="{{ url_for('registration') }}">Зарегистрировать</a> пользователя.</p>
+<h2>Список пользователей:</h2>
+
+
+<div class="flexim">
+    {% for user in users %}
+        <div class="padd">
+        <div class="card">
+            <div class="content">
+                <div class="details">
+                    <h2>{{ user.fullname }}<br><span>ID {{ user.id }} {% if user.admin == True %}Сотрудник{% else %}Абитуриент{% endif %} {{ user.id_reg }}</span></h2>
+                    <div class="data">
+                        <h3>Повар<br><span>{% if user.cook == True %}<img src="/static/true.png" width="20px">{% else %}<img src="/static/false.png" width="20px">{% endif %}</span></h3>
+                        <h3>Столяр<br><span>{% if user.carp == True %}<img src="/static/true.png" width="20px">{% else %}<img src="/static/false.png" width="20px">{% endif %}</span></h3>
+                        <h3>Маляр<br><span>{% if user.paint == True %}<img src="/static/true.png" width="20px">{% else %}<img src="/static/false.png" width="20px">{% endif %}</span></h3>
+                    </div>
+                    <div class="data">
+                        <h3>|</h3>
+                        <h3>Email<br><span>{{ user.email }}</span></h3>
+                        <h3>|</h3>
+                    </div>
+                    <div class="data">
+                        <h3>Изм.<br><span><a href="/user/edit/{{ user.id }}"><img src="/static/edit.png" alt="Изменить" width="20px"></a></span></h3>
+                        <h3>Телефон<br><span>{{ user.phone }}</span></h3>
+                        <h3>Уд.<br><span><a href="/user/delete/{{ user.id }}"><img src="/static/delete.png" alt="Удалить" width="20px"></a></span></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
